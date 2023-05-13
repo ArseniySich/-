@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <?php 
+    session_start(); 
+  
+    if (!isset($_SESSION['username'])) {
+        $_SESSION['msg'] = "You must log in first";
+        header('location: login.php');
+    }
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        unset($_SESSION['username']);
+        header("location: login.php");
+    }
+  ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Jost&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+ <script type="text/javascript">
+        $(document).ready(function(){
+         
+        $(window).scroll(function(){
+        if ($(this).scrollTop() > 50) {
+        $('.scrollup').fadeIn();
+        } else {
+        $('.scrollup').fadeOut();
+        }
+        });
+         
+        $('.scrollup').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+        });
+         
+        });
+        </script> 
+<a href="#" class="scrollup"><img id="rocket" src="https://cdn.icon-icons.com/icons2/1144/PNG/512/scrollarrows_80935.png" alt=""></a>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+        rel="stylesheet">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="navigation">
+                <div><img src="лого.svg" alt=""></div>
+                <nav>
+                    <a href="#two">О нас</a>
+                    <a href="#eleven">Услуги</a>
+                    <a href="#eleven">Стоимость</a>
+                    <a href="#nine">Блог</a>
+                    <a href="#ten">Команда</a>
+                    <a href="">Контакты</a>
+                    <a href="register.php">Регистрация</a>
+                    <div class="content">
+  	<!-- notification message -->
+  	<?php if (isset($_SESSION['success'])) : ?>
+      <div class="error success" >
+      	<h3>
+          <?php 
+          	echo $_SESSION['success']; 
+          	unset($_SESSION['success']);
+          ?>
+      	</h3>
+      </div>
+  	<?php endif ?>
+
+    <!-- logged in user information -->
+    <?php  if (isset($_SESSION['username'])) : ?>
+    	<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+    	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+    <?php endif ?>
+</div>
+                </nav>
+            </div>
+            <div class="main">
+                <span>WAWE</span>
+                <span>Школа серфинга на канарских Островах</span>
+            </div>
+            <img src="Vector.svg" alt="" class="vector">
+        
+        </header>
+        <main style="width:100% ;">
+            <div class="item two" id="two">
+                <div class="main-h" style="padding-top: 189px;">
+
+                    <h1> О ШКОЛЕ, О СЕРФИНГЕ, О КАНАРАХ </h1>
+                    <img src="Untitled.svg" alt="">
+                </div>
+                <div class="text">
+                    <div class="text-col style-text">
+                        <span>Канарские острова не случайно называют европейскими Гавайями – это идеальное место для
+                            поклонников серфинга: стабильный теплый ветер круглый год, песчаные пляжи, километры
+                            нетронутых просторов и прозрачное море. А настоящей Меккой для серфингистов становится
+                            Фуэртевентура – второй по величине остров архипелага.</span>
+                        <span>Именно здесь лучшее в Испании место, в котором можно пройти обучение серфингу. Кроме того,
+                            что зимой и осенью сюда приходят огромные атлантические волны, Фуэртевентура может
+                            похвастать и множеством мелководных спокойных лагун, отлично подходящих для обучения
+                            начинающих серфингистов.</span>
+                        <span>Серфинг на Канарских островах доступен круглый год – и волны, и подходящая погода здесь
+                            есть всегда. Причем волну, подходящую по уровню, сможет найти и настоящий профи, и новичок.
+                            Не случайно считается, что именно это место лучше всего подойдет для обучения здесь возможно
+                            без сложностей переходить на новый уровень.</span>
+                        <span>Перечисляя достоинства, нельзя обойти и то, что пляжи Фуэртевентуры самые протяженные на
+                            Канарах. В итоге невозможно представить их переполненных туристами. Вы столкнетесь только с
+                            теми, кого,как и вас, будет интересовать одна цель – обучение серфингу.</span>
+                    </div>
+                    <div class="text-col style-text">
+                        <span>Пока что вы только хотите понять, что такое серфинг, или уже испытали всю прелесть катания
+                            на волнах, но желаете поднять свой уровень? Наша школа серфинга сможет предложить обучение
+                            для любого уровня подготовки.</span>
+                        <span style="height: 87px;">Четыре часа увлекательных занятий в день помогут вам уверенно
+                            покорять волны, почувствовать себя настоящим серфингистом.</span>
+                        <span>Основные достоинства нашей русской школы – высокое качество преподавания и организации
+                            занятий, безопасность (все наши клиенты застрахованы в компании Allianz), отличный инвентарь
+                            и экипировка (предоставляется на весь курс обучения), в том числе мягкие безопасные доски
+                            для начинающих.</span>
+                        <span>Сначала мы определяем уровень катания и физической подготовки и только потом составляем
+                            программу подготовки. И можем заверить, что после того, как закончится обучение, вы не
+                            только получите массу великолепных ощущений, но и это уровень поднимется на новую
+                            ступень.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item three">
+                <div class="main-h" style="padding-top: 200px;">
+                    <h1>В ШКОЛЕ ВЫ ПОЛУЧИТЕ</h1>
+                    <img src="Untitled.svg" alt="">
+                </div>
+                <div class="line-three" style="margin:101px ;">
+                    <div class="three-cols">
+                        <div class="line">
+                            <img src="SUN.svg" alt="">
+                            <span class="subtitle">ПРОЖИВАНИЕ</span>
+                        </div>
+                        <span class="three-col-txt style-text">Наша школа серфинга находится в 100 м от океанского
+                            побережья. К услугам гостей открытый бассейн и бесплатный Wi-Fi. Из верхней террасы
+                            открывается вид на океан. Расстояние до центра города 15 мин. </span>
+                    </div>
+                    <div class="three-cols">
+                        <div class="line">
+                            <img src="airplane.svg" alt="">
+                            <span class="subtitle">
+                                ПЕРЕЛЕТ И<br>СТРАХОВКУ
+                            </span>
+                        </div>
+                        <p class="three-col-txt style-text">Все участники программы застрахованы страховой компанией
+                            Allianz.<br>
+                            Перелет из Тенерифе до острова Лансароте и обратно входит в стоимость программы</p>
+                    </div>
+                    <div class="three-cols">
+                        <div class="line">
+                            <img src="surfer.svg" alt="">
+                            <span class="subtitle">ОБУЧЕНИЕ И<br>ЭКИПИРОВКУ</span>
+                        </div>
+                        <span class="three-col-txt style-text">Все оборудование и экипировка известных производителей и
+                            предоставляется на весь курс программы. Тренировочный процесс начинается с определения
+                            вашего уровня катания </span>
+                    </div>
+                </div>
+                <div class="line-three " style="align-items:flex-start ;gap: 150px;">
+                    <div class="wawes">
+                        <img src="wawe1.svg" alt="">
+                        <img src="wawe2.svg" alt="">
+                        <img src="wawe3.svg" alt="">
+                    </div>
+                    <div class="row2-col2 style-text">
+                        <span>Огромным преимуществом нашей школы является собственная методика обучения. Мы разработали
+                            собственный стиль обучения серфингу, который позволяет новичкам максимально быстро встать на
+                            доску. </span>
+                        <span>Именно наша методика и наши преподаватели позволили нам пройти аттестацию Федерации
+                            серфинга Канарских островов - FEDERACIÓN CANARIA DE SURF. Это означает, что наша школа
+                            соответствует всем мировым стандартам. Переаттестация производится ежегодно и это позволяет
+                            нам всегда стремиться к улучшению обучения.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="four">
+                <div class="four-col1">
+                    <div class="main-h ">
+                        <h1>ПОКОРЯЙ ВЕРШИНЫ</h1>
+                        <img src="Untitled.svg" alt="">
+                    </div>
+                    <div class="four-col1-text style-text">
+                        <span>Преподаватели нашей школы серфинга в числе лучших серферов на Канарских островах. Среди
+                            них - чемпион Европы по лонгборду, который с радостью поделится опытом как с новичками, так
+                            и более опытными серферами.
+                            Все члены преподавательского состава являются сертифицированными членами Федерации серфинга
+                            Канарских островов. Некоторые из них знают русский язык, что определенно позиционирует нас
+                            как русскую школу серфинга за границей!</span>
+                        <span>Весь тренерский состав регулярно участвует в семинарах и курсах повышения квалификации,
+                            которые проводятся по всему миру различными известными серф-клубами и федерациями. Поэтому в
+                            нашей школе серфинга вы можете быть спокойны: вас обучают лучшие тренеры!</span>
+                        <span>Методика обучения серфингу рассчитана как на новичков, на серферов среднего уровня, так и
+                            на серферов уровня ТОП. Тренеры находят подход к каждому, несмотря на то, что обучение
+                            серфингу в нашей школе производится в группах. Однако, мы предлагаем персональные уроки
+                            серфинга - только вы и тренер! П</span>
+                    </div>
+                </div>
+                <div class="four-col2">
+                    <img src="Rectangle 88.png" alt="">
+                </div>
+            </div>
+
+            <div class="item five">
+                <div class="main-h">
+                    <h1>ГАЛЕРЕЯ</h1>
+                    <img src="Untitled.svg" alt="">
+                </div>
+
+                <div class="five-col">
+                    <div class="five-col-line1">
+                        <span>ВСЕ</span>
+                        <span style="color:rgba(0, 178, 160, 1);">ТУРИСТЫ</span>
+                        <span>ПРИРОДА</span>
+                        <span>ПРОФИ</span>
+                    </div>
+                    <div class="five-col-fotos">
+                        <div class="five-col-line2">
+                            <img src="Rectangle 89.png" alt="">
+                            <img src="Rectangle 91.png" alt="">
+                            <img src="Rectangle 93.png" alt="">
+                        </div>
+                        <div class="five-col-line2">
+                            <img src="Rectangle 94.png" alt="">
+                            <div>
+                                <div class='blackRect'></div>
+                                <img src="Rectangle 92.png" alt="">
+                            </div>
+                            <img src="Rectangle 90.png" alt="">
+                        </div>
+                    </div>
+                    <input type="button" value="ПОКАЗАТЬ ЕЩЕ" class="more">
+                </div>
+
+
+
+
+
+            </div>
+            <div class="six">
+                <span class="six-main">«Если сомневаешься – иди катайся.»</span>
+                <span class="style-text" style="margin-left:600px ;">Нэт Янг, первый Чемпион Мира по сёрфингу</span>
+            </div>
+            <div class="seven">
+                <div class="video">
+                    <img src="Rectangle 100.png" alt="">
+                    <div class="btn">
+                        <img src="Polygon 1.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="item eight">
+                <div class="eight-col">
+                    <span class="eight-num">450</span>
+                    <span>туристов</span>
+                </div>
+                <div class="eight-col">
+                    <span class="eight-num">2500</span>
+                    <span>часов катания</span>
+                </div>
+                <div class="eight-col">
+                    <span class="eight-num">10</span>
+                    <span>проф.тренеров</span>
+                </div>
+                <div class="eight-col">
+                    <span class="eight-num">365</span>
+                    <span>дней в году</span>
+                </div>
+            </div>
+
+            <div class="item nine" id="nine">
+                <div class="main-h">
+                    <h1>БЛОГ</h1>
+                    <img src="Untitled.svg" alt="">
+                </div>
+                <div class="slider">
+                    <input type="radio" name="switch" id="slider-radio1">
+                    <input type="radio" name="switch" id="slider-radio2">
+                    <input type="radio" name="switch" id="slider-radio3">
+                    <input type="radio" name="switch" id="slider-radio4">
+                    <input type="radio" name="switch" id="slider-radio5">
+                    <input type="radio" name="switch" id="slider-radio6">
+                    <input type="radio" name="switch" id="slider-radio7">
+                    <input type="radio" name="switch" id="slider-radio8">
+                    <input type="radio" name="switch" id="slider-radio9">
+                    <input type="radio" name="switch" id="slider-radio10">
+
+
+                    <div class="shadow-photo">
+                        <div class="shadow-text">
+                            <span>ЧТО НЕОБХОДИМО ВЗЯТЬ С СОБОЙ НА СЕРФ ТУР</span>
+                            <span>ТОП 20 необходимых вещей для комфортного отдыха и обучения</span>
+                        </div>
+                    </div>
+
+                    <div class="label-group">
+                        <label for="slider-radio1"></label>
+                        <label for="slider-radio2"></label>
+                        <label for="slider-radio3"></label>
+                        <label for="slider-radio4"></label>
+                        <label for="slider-radio5"></label>
+                        <label for="slider-radio6"></label>
+                        <label for="slider-radio7"></label>
+                        <label for="slider-radio8"></label>
+                        <label for="slider-radio9"></label>
+                        <label for="slider-radio10"></label>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="item ten" id="ten">
+                <div class="main-h">
+                    <h1>НАША КОМАНДА</h1>
+                    <img src="Untitled.svg" alt="">
+                </div>
+                <div class="ten-line">
+                    <div class="ten-col">
+                        <img src="Rectangle 107.png" alt="">
+                        <div class="ten-col-text">
+                            <span>Mike</span>
+                            <span>Главный инстуктор</span>
+                        </div>
+                    </div>
+                    <div class="ten-col">
+                        <img src="Rectangle 108.png" alt="">
+                        <div class="ten-col-text">
+                            <span>Mike</span>
+                            <span>инстуктор</span>
+                        </div>
+                    </div>
+                    <div class="ten-col">
+                        <img src="Rectangle 109.png" alt="">
+                        <div class="ten-col-text">
+                            <span>Mike</span>
+                            <span>инстуктор</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="eleven" id="eleven" >
+                <div class="main-h" style="padding-top:200px ;">
+                    <h1>ПАКЕТЫ УСЛУГ</h1>
+                    <img src="Untitled.svg" alt="">
+                </div>
+                <div class="line" style="gap: 60px;">
+                    <div class="eleven-col">
+                        <span class="eleven-col-main">Стандарт</span>
+                        <div class="eleven-col-text style-text">
+                            <span>Проживание на вилле 6 ночей </span>
+                            <span>Номер категории стандарт</span>
+                            <span>Экипировка для обучения</span>
+                            <span>Обучение серфингу 5 тренировок по 2 часа</span>
+                            <span>Страховка</span>
+                            <span>Вечеринка с угощениями и дискотекой</span>
+                        </div>
+                        <div class="eleven-col-text money" style="flex-direction:row ;">
+                            <span class="eleven-col-main">450</span>
+                            <span class="dollar">$</span>
+                        </div>
+                    </div>
+                    <div class="eleven-col">
+                        <span class="eleven-col-main">Все включено</span>
+                        <div class="eleven-col-text style-text">
+                            <span>Проживание на вилле 6 ночей</span>
+                            <span>Номер категории люкс</span>
+                            <span>Экипировка для обучения</span>
+                            <span>Обучение серфингу 8 тренировок по 2 часа</span>
+                            <span>Страховка</span>
+                            <span>Вечеринка с угощениями и дискотекой</span>
+                            <span>Авиа перелет Тенерифе -Лансароте - Тенерифе </span>
+                            <span>Завтраки на вилле</span>
+                        </div>
+                        <div class="eleven-col-text money" style="flex-direction:row ;">
+                            <span class="eleven-col-main">950</span>
+                            <span class="dollar">$</span>
+                            <a href="./qqq.txt" download="">
+                                <button>Скачать файл <i class="fas fa-download"></i></button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="eleven-col">
+                        <span class="eleven-col-main">Профи</span>
+                        <div class="eleven-col-text style-text">
+                            <span>Проживание на вилле 8 ночей</span>
+                            <span>Номер категории люкс</span>
+                            <span>Экипировка для обучения</span>
+                            <span>Обучение серфингу 16 тренировок по 2 часа</span>
+                            <span>Страховка</span>
+                            <span>Вечеринка с угощениями и дискотекой</span>
+                            <span>Авиа перелет Тенерифе -Лансароте - Тенерифе </span>
+                            <span>Завтраки и ужины на вилле</span>
+                        </div>
+                        <div class="eleven-col-text money">
+                            <span class="eleven-col-main">1450</span>
+                            <span class="dollar">$</span>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item twelve">
+                <script type="text/javascript" charset="utf-8" async
+                    src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A8f2012c8a2617b0735ce4d3f1fa132f7f763392ba8809c84e8f6fb6948971075&amp;width=1473&amp;height=640&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+
+        </main>
+        <footer style="width:100% ;">
+            <div class="login">
+                <div class="main-h">
+                    <h1>ОСТАВИТЬ ЗАЯВКУ</h1>
+                    <img src="Untitled.svg" alt="">
+                </div>
+                <div class="login-row">
+                <div class="login-col">
+                    <input type="text" placeholder="Имя">
+                    <input type="text" placeholder="Телефон">
+                    <span class="login-text">Оставьте сообщение, и мы свяжемся с Вами в ближайшее время</span>
+                    <img src="line.svg" alt="" class="line">
+                    <input type="button" value="ОТПРАВИТЬ" class="more logbtn">
+                </div>
+                <div class="login-col grey">
+                    <span style="margin-top: 49px;">
+                        Есть вопрос?<br>
+                        Вы можете связаться с нами:
+                        </span>
+                    <span>WhatsApp, Viber, Telegram<br>
+                        +3 467 486-37-88</span>
+                    <span>Avenida grandes playas 79,<br> 
+                        Corralejo la Oliva Fuerteventura,<br> 
+                        Spain. 35660</span>
+                </div>
+            </div>
+            <div class="mess">
+                <a href="">INSTAGRAM</a>
+                <a href="">FACEBOOK</a>
+                <a href="">YOUTUBE</a>
+
+            </div>
+            </div>
+            <div class="end">
+                <img src="лого.svg" alt="">
+            </div>
+            <div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+    </ul>
+  </footer>
+</div>
+        </footer>
+
+    </div>
+</body>
+
+</html>
